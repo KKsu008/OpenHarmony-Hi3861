@@ -1,1 +1,0 @@
-# OpenHarmony-Hi3861
