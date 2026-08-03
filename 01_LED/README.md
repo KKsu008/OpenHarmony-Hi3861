@@ -14,6 +14,7 @@
 
 系统： OpenHarmony 
 
+
 LiteOS-M 开发工具： DevEco Device Tool 
 
 编译： hb build
@@ -22,7 +23,7 @@ LiteOS-M 开发工具： DevEco Device Tool
 
 烧录程序后： LED灯亮。
 
-![064cee1dfc48480a27e4fd8679dce797](E:\PC\xwechat_files\wxid_vl1mito2zvxh22_fb4d\temp\RWTemp\2026-08\064cee1dfc48480a27e4fd8679dce797.jpg)
+<img width="3072" height="4096" alt="01_LED" src="https://github.com/user-attachments/assets/7019fe89-dc42-4682-ba1d-af2bab6f7266" />
 
 ### 四、知识点
 
