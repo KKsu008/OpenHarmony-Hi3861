@@ -132,4 +132,26 @@ LiteOS-M 开发工具： DevEco Device Tool
    
    ```
 
-   
+   复位芯片
+
+   ![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\Snipaste_2026-08-04_13-21-24.png)
+
+​	读写
+
+![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\Snipaste_2026-08-04_13-26-53.png)
+
+​	三灯使能
+
+![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\Snipaste_2026-08-04_13-28-50.png)
+
+LED控制 0x63是由PWM控制
+
+![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\Snipaste_2026-08-04_13-30-40.png)
+
+实验结果
+
+RBG三色LED间隔一秒钟亮灭
+
+![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\微信图片_20260804133650_30_47.jpg)
+
+![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\微信图片_20260804133636_29_47.jpg)
