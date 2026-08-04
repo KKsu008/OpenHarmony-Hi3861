@@ -18,6 +18,12 @@ LiteOS-M 开发工具： DevEco Device Tool
 
 烧录程序后：led灯亮（可利用三色led每个的亮度来调节led的颜色）
 
+![phenomenon2](Image/phenomenon2.jpg)
+
+![phenomenon1](Image/phenomenon1.jpg)
+
+
+
 ### 四、知识点
 
 初始化
@@ -26,119 +32,119 @@ LiteOS-M 开发工具： DevEco Device Tool
 
  * ```
     * uint32_t AW2013_Init(void)
-   
+      
       {
-   
+      
         uint32_t result;
-   
+      
         // gpio_9 复用为 I2C_SCL
-   
+      
         hi_io_set_pull(HI_IO_NAME_GPIO_9, HI_IO_PULL_UP);
-   
+      
         hi_io_set_func(HI_IO_NAME_GPIO_9, HI_IO_FUNC_GPIO_9_I2C0_SCL);
-   
+      
         // gpio_10 复用为 I2C_SDA
-   
+      
         hi_io_set_pull(HI_IO_NAME_GPIO_10, HI_IO_PULL_UP);
-   
+      
         hi_io_set_func(HI_IO_NAME_GPIO_10, HI_IO_FUNC_GPIO_10_I2C0_SDA);
-   
+      
         result = hi_i2c_init(AW2013_I2C_IDX, AW2013_I2C_SPEED);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 Init status is 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         // 复位芯片
-   
+      
         result = aw2013_WiteByte(RSTR_REG_ADDR, 0x55);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 RdSTR_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         usleep(TIME_RESET);
-   
+      
         // 使能全局控制器 设置为RUN模式
-   
+      
         result = aw2013_WiteByte(GCR_REG_ADDR, 0x01);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 GCR_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         // 设置打开RGB三路通道
-   
+      
         result = aw2013_WiteByte(LCTR_REG_ADDR, 0x07); // 4: B, 2: G, 1: R
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 LCTR_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         // 设置RGB三路通道的工作模式
-   
+      
         result = aw2013_WiteByte(LCFG0_REG_ADDR, 0x63);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 LCFG0_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         result = aw2013_WiteByte(LCFG1_REG_ADDR, 0x63);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 LCFG1_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         result = aw2013_WiteByte(LCFG2_REG_ADDR, 0x63);
-   
+      
         if (result != HI_ERR_SUCCESS) {
-   
+      
       ​    printf("I2C aw2013 LCFG2_REG_ADDR status = 0x%x!!!\r\n", result);
-   
+      
       ​    return result;
-   
+      
         }
-   
+      
         printf("I2C aw2013 Init is succeeded!!!\r\n");
-   
+      
         return HI_ERR_SUCCESS;
-   
+      
       }
-   
-   
+
+
    ```
 
    复位芯片
 
-   ![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\复位芯片.png)
+   ![reset_chip](images/reset_chip.png)
 
 ​	读写
 
-![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\读写.png)
+![read_write](images/read_write.png)
 
 ​	三灯使能
 
@@ -146,12 +152,34 @@ LiteOS-M 开发工具： DevEco Device Tool
 
 LED控制 0x63是由PWM控制
 
-![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\LED控制.png)
+![three_led](images/three_led.png)
 
 实验结果
 
 RBG三色LED间隔一秒钟亮灭
 
-![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\实验现象2.jpg)
+![led_pwm](images/led_pwm.png)
 
 ![](E:\UserData\Detoke\OpenHarmony Hi3861\02_RGB\实验现象1.jpg)
+   ```
+
+
+
+复位芯片
+
+![Reset](Image/Reset.png)
+
+读写
+
+![read_write](Image/read_write.png)
+
+
+
+LED控制
+
+![LED_control](Image/LED_control.png)
+
+三灯使能
+
+![Three_lights_enabled](Image/Three_lights_enabled.png)
+
